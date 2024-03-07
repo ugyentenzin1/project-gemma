@@ -16,11 +16,10 @@ export class AuthService {
     let user = this.userService.users.find(val => val.userName === users.username && val.userPassword === users.password);
     user === undefined ? this.isLogged = false : this.isLogged = true;
     return user;
-
   }
 
   logOut(){
-    this.isLogged = false;
+    this.isLogged ? alert('You are logged out'): '' ;
   }
 
   isAuthenticated(): Boolean {

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Form, Validators } from '@angular/forms';
 import { AuthService } from '../services /auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
 
@@ -15,18 +16,26 @@ export class AuthComponent implements OnInit {
   })
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService
+              private authService: AuthService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute
           ) { }
 
   ngOnInit(): void {
-
+    this.activatedRoute.queryParamMap.subscribe(val => {
+     let logout = Boolean(val.get('logout'));
+     logout ? (this.authService.logOut()):'';
+    })
   }
 
   signIn(data: any) {
-   console.log(data)
    const user = this.authService.login(data);
-   this.authService.isAuthenticated() ? console.log('sucess'): console.log('no user');
-   user === undefined ? alert('No user Found'): alert(`${data.username}, Welcome`);    
-  }
+    if(user === undefined) {
+    alert('No user Found');
 
+   } else {
+    alert(`${data.username}, Welcome`);
+    this.router.navigate(['/home']);
+   }
+  }
 }
