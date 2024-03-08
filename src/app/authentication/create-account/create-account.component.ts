@@ -26,7 +26,7 @@ export class CreateAccountComponent implements OnInit {
 
   creatNewAccountFn(name: string, id: string, password: string) {
     this.authService.newAccount(name, id, password);
-    this.router.navigate(['/auth'])
+    alert('Registration Successful!!');
+    this.router.navigate(['/auth']);   
   } 
-
 }
