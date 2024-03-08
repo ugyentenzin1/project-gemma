@@ -18,7 +18,7 @@
                 <div>
                     <label style="color: white">Id</label>
                     <input formControlName="id" type="text"
-                        [ngClass]="createNewAccountForm.get('id')?.invalid && (createNewAccountForm.get('id')?.touched || createNewAccountForm.get('id')?.dirty) ? '': 'margin-bottom'"
+                        [ngClass]="createNewAccountForm.get('id')?.invalid && (createNewAccountForm.get('id')?.touched || createNewAccountForm.get('id')?.dirty) ? '' : 'margin-bottom'"
                         class="text-input" required="" />
                     <p *ngIf="createNewAccountForm.get('id')?.invalid && (createNewAccountForm.get('id')?.touched || createNewAccountForm.get('id')?.dirty)"
                         style="color: rgb(220, 74, 74); margin-bottom: 16px; margin-top: 8px;">This is a required field*
