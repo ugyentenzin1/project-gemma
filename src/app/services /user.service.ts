@@ -4,7 +4,7 @@ import { User } from '../models /user';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService  {
 
   constructor() { }
 
@@ -16,4 +16,6 @@ export class UserService {
     new User('Uranus', '043423233', 'uranus05'),
     new User('Gatok', '00000673', 'gatok06'),
   ]
+
+
 }

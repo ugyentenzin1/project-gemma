@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Form, Validators } from '@angular/forms';
-import { AuthService } from '../services /auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services /auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -10,13 +10,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  form: FormGroup = this.fb.group({
+  loginForm: boolean = true;
+
+  signInForm: FormGroup = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
-  })
+  });
+
+  private authService: AuthService = inject(AuthService);
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
               private router: Router,
               private activatedRoute: ActivatedRoute
           ) { }
