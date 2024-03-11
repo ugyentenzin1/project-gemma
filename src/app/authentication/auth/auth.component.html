@@ -4,6 +4,9 @@
       <div class="logo">
         <img src="https://image.ibb.co/hW1YHq/login-logo.png" alt="Sluralpright" />
       </div>
+      <div class="tets clas" *ngFor="let user of users">
+        <p style="color: white;">{{user.name}} sonam</p>
+      </div>
       <ng-container *ngIf="loginForm">
         <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm.value)">
           <div>
@@ -38,7 +41,7 @@
       </div>
       <div style="margin-bottom: 16px">
         <i class="fa-brands fa-square-facebook font"></i>
-        <i class="fa-brands fa-google font" style="margin-left: 24px;"></i>
+        <i class="fa-brands fa-google font" (click)="signInWithGoogle()" style="margin-left: 24px;"></i>
       </div>
       <a href="#" class="secondary-btn" routerLink="/new-account">Create an account</a>
     </div>

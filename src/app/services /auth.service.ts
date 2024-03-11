@@ -1,6 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 import { User } from '../models /user';
+import {GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider} from '@angular/fire/auth'
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+import { from, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +14,9 @@ export class AuthService {
   isLogged: boolean = false;
   
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    private fireAuth: AngularFireAuth, 
+    private router: Router) { }
 
   //check the creditial
   login(users: any) {
@@ -25,6 +31,7 @@ export class AuthService {
   }
 
   isAuthenticated(): Boolean {
+    console.log(this.isLogged, 'check')
     return this.isLogged;
   }
 
@@ -32,5 +39,13 @@ export class AuthService {
     this.userService.users.unshift(new User(name, id, passowrd));
     const updatedUsers = this.userService.users;
     console.log(updatedUsers)
+  }
+
+  googleSignIn() {
+    this.fireAuth.signInWithPopup(new GoogleAuthProvider).then((res) => {
+      this.isLogged = true;
+      this.router.navigate(['/home']);
+      localStorage.setItem('googleToken', JSON.stringify(res));
+    }, error => alert(error.message));
   }
 }
