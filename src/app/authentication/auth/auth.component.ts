@@ -18,6 +18,10 @@ export class AuthComponent implements OnInit {
     password: ['', Validators.required]
   });
 
+  resetPassword: FormGroup = this.fb.group({
+    email: [''],
+  })
+
   private authService: AuthService = inject(AuthService);
 
   constructor(private fb: FormBuilder,
@@ -46,5 +50,13 @@ export class AuthComponent implements OnInit {
 
   signInWithGoogle(data: boolean){ 
     this.authService.googleSignIn(data);
+  }
+
+  forgotPassowrd() {
+    this.loginForm = !this.loginForm;
+  }
+
+  sendResetEmail(email: string) {
+    this.authService.sendResetEmailPassowrd(email);
   }
 }

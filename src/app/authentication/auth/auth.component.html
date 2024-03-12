@@ -7,7 +7,7 @@
       <div class="tets clas" *ngFor="let user of users">
         <p style="color: white;">{{user.name}} sonam</p>
       </div>
-      <ng-container *ngIf="loginForm">
+      <ng-container *ngIf="loginForm else passwordReset">
         <form [formGroup]="signInForm" (ngSubmit)="emailAndPassword(signInForm.value.username, signInForm.value.password)">
           <div>
             <label style="color: white;">Email or username</label>
@@ -30,8 +30,23 @@
           >Sign In</button>
         </form>
       </ng-container>
-      <div class="links">
-        <a href="#">Forgot Password</a>
+      <ng-template #passwordReset>
+        <form [formGroup]="resetPassword" (ngSubmit)="sendResetEmail(resetPassword.value.email)">
+          <div>
+            <label style="color: white;">Email or username</label>
+            <input formControlName="email" type="text" class="text-input"
+              [ngClass]="resetPassword.get('email')?.invalid && (resetPassword.get('email')?.touched || resetPassword.get('email')?.dirty) ? '': 'margin-bottom'"
+              required />
+            <p *ngIf="resetPassword.get('email')?.invalid && (resetPassword.get('email')?.touched || resetPassword.get('email')?.dirty)"
+              style="color: rgb(220, 74, 74); margin-bottom: 16px; margin-top: 8px;">This is a required field*</p>
+          </div>
+          <button class="primary-btn" type="submit">
+            Send Email
+          </button>
+        </form>
+      </ng-template>
+      <div style="margin-bottom: 16px; display: flex; justify-content: center; align-items: center;" class="links">
+        <button class="secondary-btn" (click)="forgotPassowrd()">{{loginForm ?  'Forgot Password': 'Back To Login Page'}}</button>
       </div>
       <div class="or">
         <hr class="bar" />

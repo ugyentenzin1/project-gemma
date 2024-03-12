@@ -23,7 +23,7 @@ export class AuthService {
     localStorage.removeItem('emailAndPassword');
   }
 
-  isAuthenticated(): Boolean {
+  isAuthenticated(): boolean {
     return this.isLogged;
   }
 
@@ -54,5 +54,12 @@ export class AuthService {
       alert('account successfully created')
       this.router.navigate(['/auth']);
     }, err => alert(err.message))
+  }
+
+  sendResetEmailPassowrd(email: string) {
+    this.fireAuth.sendPasswordResetEmail(email).then(() => {
+      alert('Check Your Email!!!');
+      this.router.navigate(['/auth']);
+    }, err => alert(err.message));
   }
 }
