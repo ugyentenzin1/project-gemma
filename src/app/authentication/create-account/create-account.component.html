@@ -5,7 +5,7 @@
                 <img src="https://image.ibb.co/hW1YHq/login-logo.png" alt="Sluralpright" />
             </div>
             <form [formGroup]="createNewAccountForm"
-                (ngSubmit)="creatNewAccountFn(createNewAccountForm.value.name, createNewAccountForm.value.id, createNewAccountForm.value.password)">
+                (ngSubmit)="createEmailAndPassword(createNewAccountForm.value.name, createNewAccountForm.value.password)">
                 <div>
                     <label style="color: white;">Email or username</label>
                     <input formControlName="name" type="text" class="text-input"
@@ -16,32 +16,18 @@
                     </p>
                 </div>
                 <div>
-                    <label style="color: white">Id</label>
-                    <input formControlName="id" type="text"
-                        [ngClass]="createNewAccountForm.get('id')?.invalid && (createNewAccountForm.get('id')?.touched || createNewAccountForm.get('id')?.dirty) ? '' : 'margin-bottom'"
-                        class="text-input" required="" />
-                    <p *ngIf="createNewAccountForm.get('id')?.invalid && (createNewAccountForm.get('id')?.touched || createNewAccountForm.get('id')?.dirty)"
-                        style="color: rgb(220, 74, 74); margin-bottom: 16px; margin-top: 8px;">This is a required field*
-                    </p>
-                </div>
-                <div>
                     <label style="color: white">Password</label>
                     <input formControlName="password" type="password"
                         [ngClass]="createNewAccountForm.get('password')?.invalid && (createNewAccountForm.get('password')?.touched || createNewAccountForm.get('password')?.dirty) ? '': 'margin-bottom'"
-                        class="text-input" required="" />
+                        class="text-input" required/>
                     <p *ngIf="createNewAccountForm.get('password')?.invalid && (createNewAccountForm.get('password')?.touched || createNewAccountForm.get('password')?.dirty)"
                         style="color: rgb(220, 74, 74); margin-bottom: 16px; margin-top: 8px;">This is a required field*
                     </p>
                 </div>
-                <button [disabled]="createNewAccountForm.invalid" type="submit"
+                <button [disabled]="createNewAccountForm.invalid && (createNewAccountForm.touched || createNewAccountForm.dirty)" type="submit"
                     [ngClass]="createNewAccountForm.invalid && (createNewAccountForm.touched || createNewAccountForm.dirty) ? 'disabled-btn': 'primary-btn'">Create
                     New Account</button>
             </form>
-            <div class="or">
-                <hr class="bar" />
-                <span>OR</span>
-                <hr class="bar" />
-            </div>
         </div>
         <footer id="main-footer">
             <p>Copyright &copy; 2018, Sluralpright All Rights Reserved</p>

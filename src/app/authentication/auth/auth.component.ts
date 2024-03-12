@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { FormBuilder, FormGroup, Form, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services /auth.service';
@@ -17,12 +18,19 @@ export class AuthComponent implements OnInit {
     password: ['', Validators.required]
   });
 
+  resetPassword: FormGroup = this.fb.group({
+    email: ['', Validators.required, Validators.email],
+  })
+
   private authService: AuthService = inject(AuthService);
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private activatedRoute: ActivatedRoute
+              private activatedRoute: ActivatedRoute,
+              private db : AngularFireDatabase
           ) { }
+
+   users: any[] = [];
 
   ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe(val => {
@@ -31,14 +39,19 @@ export class AuthComponent implements OnInit {
     })
   }
 
-  signIn(data: any) {
-   const user = this.authService.login(data);
-    if(user === undefined) {
-    alert('No user Found');
+  emailAndPassword(email: string, passowrd: string) { 
+    this.authService.signInWithEmailAndPassword(email, passowrd)
+  }
 
-   } else {
-    alert(`${data.username}, Welcome`);
-    this.router.navigate(['/home']);
-   }
+  signInWithGoogle(data: boolean){ 
+    this.authService.googleSignIn(data);
+  }
+
+  forgotPassowrd() {
+    this.loginForm = !this.loginForm;
+  }
+
+  sendResetEmail(email: string) {
+    this.authService.sendResetEmailPassowrd(email);
   }
 }

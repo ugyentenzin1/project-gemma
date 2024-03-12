@@ -11,7 +11,7 @@ export const canActivate = () => {
     if(authService.isAuthenticated()) {
         return true;
     } else  {
-        router.navigate(['/auth'])
+        router.navigate(['/auth']);
         return false
     }
 }
