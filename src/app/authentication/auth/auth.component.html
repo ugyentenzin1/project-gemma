@@ -4,9 +4,6 @@
       <div class="logo">
         <img src="https://image.ibb.co/hW1YHq/login-logo.png" alt="Sluralpright" />
       </div>
-      <div class="tets clas" *ngFor="let user of users">
-        <p style="color: white;">{{user.name}} sonam</p>
-      </div>
       <ng-container *ngIf="loginForm else passwordReset">
         <form [formGroup]="signInForm" (ngSubmit)="emailAndPassword(signInForm.value.username, signInForm.value.password)">
           <div>

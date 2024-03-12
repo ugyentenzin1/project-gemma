@@ -30,7 +30,6 @@ export class AuthComponent implements OnInit {
               private db : AngularFireDatabase
           ) { }
 
-   users: any[] = [];
 
   ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe(val => {
