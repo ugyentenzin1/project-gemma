@@ -1,10 +1,9 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { User } from '../models /user';
-import {GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider} from '@angular/fire/auth'
+import {GoogleAuthProvider, FacebookAuthProvider} from '@angular/fire/auth'
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { from, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +17,13 @@ export class AuthService {
     private fireAuth: AngularFireAuth, 
     private router: Router) { }
 
-  //check the creditial
-  login(users: any) {
-    this.userService.users.map((val: any) => console.log(val.name, val.userName))
-    let user = this.userService.users.find(val => val.userName === users.username && val.userPassword === users.password);
-    user === undefined ? this.isLogged = false : this.isLogged = true;
-    return user;
-  }
-
   logOut(){
-    this.isLogged ? alert('You are logged out'): '' ;
+    this.isLogged = false;
+    this.fireAuth.signOut();
+    localStorage.removeItem('emailAndPassword');
   }
 
   isAuthenticated(): Boolean {
-    console.log(this.isLogged, 'check')
     return this.isLogged;
   }
 
@@ -41,11 +33,26 @@ export class AuthService {
     console.log(updatedUsers)
   }
 
-  googleSignIn() {
-    this.fireAuth.signInWithPopup(new GoogleAuthProvider).then((res) => {
+  googleSignIn(data: boolean) {
+    this.fireAuth.signInWithPopup(data ? new GoogleAuthProvider : new FacebookAuthProvider).then((res) => {
       this.isLogged = true;
       this.router.navigate(['/home']);
-      localStorage.setItem('googleToken', JSON.stringify(res));
-    }, error => alert(error.message));
+      localStorage.setItem('googleToken', JSON.stringify(res.user?.uid));
+    }, error => alert(error.message)) ;
+  }
+
+  signInWithEmailAndPassword(email: string, password: string) {
+    this.fireAuth.signInWithEmailAndPassword(email, password).then(res => {
+      this.isLogged = true;
+      this.router.navigate(['/home']);
+      localStorage.setItem('emailAndPassword', JSON.stringify(res.user?.uid))
+    }, err => alert(err));
+  }
+
+  createUserUsingEmail(email: string, passowrd: string) {
+    this.fireAuth.createUserWithEmailAndPassword(email, passowrd).then((res) => {
+      alert('account successfully created')
+      this.router.navigate(['/auth']);
+    }, err => alert(err.message))
   }
 }

@@ -13,7 +13,6 @@ export class CreateAccountComponent implements OnInit {
 
   createNewAccountForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
-    id: ['', Validators.required],
     password: ['', Validators.required]
   })
 
@@ -29,4 +28,8 @@ export class CreateAccountComponent implements OnInit {
     alert('Registration Successful!!');
     this.router.navigate(['/auth']);   
   } 
+
+  createEmailAndPassword(email: string, passowrd: string) {
+    this.authService.createUserUsingEmail(email, passowrd);
+  }
 }

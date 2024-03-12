@@ -35,23 +35,16 @@ export class AuthComponent implements OnInit {
     })
 
     this.db.list('/').valueChanges().subscribe(val => {
-      this.users = val; // Assign retrieved data to 'users' array
+      this.users = val;
       console.log(this.users, 'firebase');
     });
   }
 
-  signIn(data: any) {
-   const user = this.authService.login(data);
-    if(user === undefined) {
-    alert('No user Found');
-
-   } else {
-    alert(`${data.username}, Welcome`);
-    this.router.navigate(['/home']);
-   }
+  emailAndPassword(email: string, passowrd: string) { 
+    this.authService.signInWithEmailAndPassword(email, passowrd)
   }
 
-  signInWithGoogle(){ 
-    this.authService.googleSignIn();
+  signInWithGoogle(data: boolean){ 
+    this.authService.googleSignIn(data);
   }
 }

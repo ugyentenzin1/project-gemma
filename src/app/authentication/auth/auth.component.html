@@ -8,7 +8,7 @@
         <p style="color: white;">{{user.name}} sonam</p>
       </div>
       <ng-container *ngIf="loginForm">
-        <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm.value)">
+        <form [formGroup]="signInForm" (ngSubmit)="emailAndPassword(signInForm.value.username, signInForm.value.password)">
           <div>
             <label style="color: white;">Email or username</label>
             <input formControlName="username" type="text" class="text-input"
@@ -32,7 +32,6 @@
       </ng-container>
       <div class="links">
         <a href="#">Forgot Password</a>
-        <a href="#">Sign in with company or school</a>
       </div>
       <div class="or">
         <hr class="bar" />
@@ -40,8 +39,8 @@
         <hr class="bar" />
       </div>
       <div style="margin-bottom: 16px">
-        <i class="fa-brands fa-square-facebook font"></i>
-        <i class="fa-brands fa-google font" (click)="signInWithGoogle()" style="margin-left: 24px;"></i>
+        <i class="fa-brands fa-square-facebook font" (click)="signInWithGoogle(false)"></i>
+        <i class="fa-brands fa-google font" (click)="signInWithGoogle(true)" style="margin-left: 24px;"></i>
       </div>
       <a href="#" class="secondary-btn" routerLink="/new-account">Create an account</a>
     </div>
