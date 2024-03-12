@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { UserService } from './user.service';
-import { User } from '../models /user';
 import {GoogleAuthProvider, FacebookAuthProvider} from '@angular/fire/auth'
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
@@ -11,9 +9,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   isLogged: boolean = false;
-  
 
-  constructor(private userService: UserService,
+  constructor(
     private fireAuth: AngularFireAuth, 
     private router: Router) { }
 
@@ -25,12 +22,6 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return this.isLogged;
-  }
-
-  newAccount = (name: string, id: string, passowrd: string) => {
-    this.userService.users.unshift(new User(name, id, passowrd));
-    const updatedUsers = this.userService.users;
-    console.log(updatedUsers)
   }
 
   googleSignIn(data: boolean) {

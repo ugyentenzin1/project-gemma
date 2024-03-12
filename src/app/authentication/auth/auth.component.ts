@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
   });
 
   resetPassword: FormGroup = this.fb.group({
-    email: [''],
+    email: ['', Validators.required, Validators.email],
   })
 
   private authService: AuthService = inject(AuthService);
@@ -37,11 +37,6 @@ export class AuthComponent implements OnInit {
      let logout = Boolean(val.get('logout'));
      logout ? (this.authService.logOut()):'';
     })
-
-    this.db.list('/').valueChanges().subscribe(val => {
-      this.users = val;
-      console.log(this.users, 'firebase');
-    });
   }
 
   emailAndPassword(email: string, passowrd: string) { 

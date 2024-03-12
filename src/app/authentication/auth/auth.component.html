@@ -25,7 +25,7 @@
             <p *ngIf="signInForm.get('password')?.invalid && (signInForm.get('password')?.touched || signInForm.get('password')?.dirty)"
               style="color: rgb(220, 74, 74); margin-bottom: 16px; margin-top: 8px;">This is a required field*</p>
           </div>
-          <button [disabled]="signInForm.invalid" type="submit"
+          <button [disabled]="signInForm.invalid && (signInForm.touched || signInForm.dirty)" type="submit"
             [ngClass]="signInForm.invalid && (signInForm.touched || signInForm.dirty) ? 'disabled-btn': 'primary-btn'"
           >Sign In</button>
         </form>
@@ -40,7 +40,8 @@
             <p *ngIf="resetPassword.get('email')?.invalid && (resetPassword.get('email')?.touched || resetPassword.get('email')?.dirty)"
               style="color: rgb(220, 74, 74); margin-bottom: 16px; margin-top: 8px;">This is a required field*</p>
           </div>
-          <button class="primary-btn" type="submit">
+          <button [disabled]="resetPassword.invalid && (resetPassword.touched || resetPassword.dirty)" 
+           [ngClass]="resetPassword.invalid && (resetPassword.touched || resetPassword.dirty) ? 'disabled-btn': 'primary-btn'" type="submit">
             Send Email
           </button>
         </form>

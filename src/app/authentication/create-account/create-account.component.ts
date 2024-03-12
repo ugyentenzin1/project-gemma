@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { User } from 'src/app/models /user';
 import { AuthService } from 'src/app/services /auth.service';
 
 @Component({
@@ -17,17 +15,10 @@ export class CreateAccountComponent implements OnInit {
   })
 
   constructor(private fb: FormBuilder, 
-    private authService: AuthService,
-    private router: Router) { }
+    private authService: AuthService) { }
 
   ngOnInit(): void {
   }
-
-  creatNewAccountFn(name: string, id: string, password: string) {
-    this.authService.newAccount(name, id, password);
-    alert('Registration Successful!!');
-    this.router.navigate(['/auth']);   
-  } 
 
   createEmailAndPassword(email: string, passowrd: string) {
     this.authService.createUserUsingEmail(email, passowrd);
