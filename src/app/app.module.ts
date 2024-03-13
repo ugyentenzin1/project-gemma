@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './lib /components /home/home.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { RouterModule } from '@angular/router';
 import { environment } from 'src/enviroment';
@@ -16,12 +14,12 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { HomeModule } from './lib /components /home/home.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
+    AppComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -35,7 +33,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ReactiveFormsModule,
     RouterModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

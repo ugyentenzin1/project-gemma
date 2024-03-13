@@ -5,7 +5,7 @@ import { canActivate } from './services /authguard';
 
 const routes: Routes = [
   {path: '' , redirectTo: 'auth', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent, canActivate: [canActivate]},
+  {path: 'home', loadChildren:():any => import('../app/lib /components /home/home.module').then(val => val.HomeModule) , canActivate: [canActivate]},
   {path: '', loadChildren: (): any => import('../app/authentication/authentication.module').then(val => val.AuthenticationModule)},
 ]; 
 
