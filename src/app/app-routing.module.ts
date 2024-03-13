@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './lib /components /home/home.component';
 import { canActivate } from './services /authguard';
 
 const routes: Routes = [
