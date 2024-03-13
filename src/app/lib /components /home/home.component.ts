@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services /auth.service';
+import { ButtonModule } from 'primeng/button';
+import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 
 @Component({
   selector: 'app-home',
@@ -14,5 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  value!: Event;
 
 }
