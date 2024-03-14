@@ -52,6 +52,7 @@ export class ProjectsComponent implements OnInit {
     {feild: 'name', header: 'Name'},
     {feild: 'category', header: 'Category'},
     {feild: 'quatity', header: 'Quantity'},
+    {feild: 'action', header: 'Action'}
   ];
 
   constructor(private router: Router) { }

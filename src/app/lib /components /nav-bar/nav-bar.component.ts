@@ -17,6 +17,7 @@ export class NavBarComponent implements OnInit {
       {
           label: 'Dashboard',
           icon: 'pi pi-fw pi-file',
+          
       },
       {
           label: 'Profile',
@@ -26,6 +27,9 @@ export class NavBarComponent implements OnInit {
           label: 'Projects',
           icon: 'pi pi-fw pi-user',
           routerLink: '/home/projects',
+          routerLinkActiveOptions: {
+            exact: true
+          }
           
       },
       {

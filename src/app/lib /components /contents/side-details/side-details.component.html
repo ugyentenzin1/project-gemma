@@ -1,1 +1,29 @@
-<p>side-details works!</p>
+<div class="flex justify-between flex-col h-[calc(100vh-80px)] bg-white shadow-md p-28">
+
+    <div class="mt-32" *ngIf="userDetails">
+        <div class="flex justify-center items-center my-40">
+            <div class="avatar flex justify-center items-center w-[100px] h-[100px] rounded-[50%]">           
+            </div>
+        </div>
+        <div class="p-16">
+            <p class="text-[20px]">{{userDetails.displayName}}</p>
+        </div>
+        <div class="p-16">
+            <p class="text-[20px]">{{userDetails.email}}</p>
+        </div>
+        <div class="p-16">
+            <p class="text-[20px]">{{userDetails.metadata.creationTime}}</p>
+        </div>
+        <div class="p-16">
+            <p class="text-[20px]">{{userDetails.emailVerified === true ? 'Email Verified': 'Email Not Verified'}}</p>
+        </div>
+    </div>
+
+    <div>
+        <hr class="-mx-24 mb-16">
+        <p class="pl-16">Management Portal</p>
+    </div>
+
+  
+   
+</div>

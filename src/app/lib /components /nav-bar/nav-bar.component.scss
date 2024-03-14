@@ -1,11 +1,7 @@
 ::ng-deep .p-menubar {
-    background-color: black;
     padding: 16px;
     border-radius: 0;
-
-    .p-menuitem-text {
-        color: white;
-    }
+    border: none;
 
     .p-menuitem-link:hover {
         span {

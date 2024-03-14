@@ -1,10 +1,11 @@
 <div class="card">
     <p-menubar [model]="items">
         <ng-template pTemplate="start">
-            <img src="https://image.ibb.co/hW1YHq/login-logo.png" width="250px" class="mr-16" />
+            <img src="" class="mr-16" />
         </ng-template>
         <ng-template pTemplate="end">
-            <button class="primary-btn" routerLink="/auth" [queryParams]="{logout: true}">Logout</button>
+            <button pButton routerLink="/auth" [queryParams]="{logout: true}">Logout</button>
         </ng-template>
     </p-menubar>
 </div>
+
