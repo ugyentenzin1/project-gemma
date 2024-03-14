@@ -7,10 +7,12 @@ import { MenubarModule } from 'primeng/menubar';
 import { TableModule } from 'primeng/table';
 import { TimelineModule } from 'primeng/timeline';
 import { ButtonModule } from 'primeng/button';
+import { SideDetailsComponent } from '../contents/side-details/side-details.component';
 
 
 @NgModule({
   declarations: [
+    SideDetailsComponent,
     HomeComponent,
     NavBarComponent,
   ],
