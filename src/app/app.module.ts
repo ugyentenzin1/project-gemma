@@ -16,7 +16,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { HomeModule } from './lib /components /home/home.module';
 import { ProjectsComponent } from './lib /components /contents/projects/projects.component';
-
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { ProjectsComponent } from './lib /components /contents/projects/projects
     RouterModule,
     ButtonModule,
     InputTextModule,
-    HomeModule
+    HomeModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
