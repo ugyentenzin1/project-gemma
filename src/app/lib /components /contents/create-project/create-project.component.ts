@@ -11,6 +11,7 @@ export class CreateProjectComponent implements OnInit {
   constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
+    console.log(this)
     this.messageService.add({severity: 'success', detail:' dadfa', summary: 'sersadf'})
   }
 

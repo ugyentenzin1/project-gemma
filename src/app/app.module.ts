@@ -17,6 +17,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { HomeModule } from './lib /components /home/home.module';
 import { ProjectsComponent } from './lib /components /contents/projects/projects.component';
 import { TableModule } from 'primeng/table';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { TableModule } from 'primeng/table';
     HomeModule,
     TableModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -53,9 +54,14 @@ export class ProjectsComponent implements OnInit {
     {feild: 'quatity', header: 'Quantity'},
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    console.log('this')
+  }
+
+  route(): void{
+    this.router.navigate(['/home/add-student'])
   }
 
 }
