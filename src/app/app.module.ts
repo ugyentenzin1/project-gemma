@@ -15,11 +15,13 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { HomeModule } from './lib /components /home/home.module';
+import { ProjectsComponent } from './lib /components /contents/projects/projects.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

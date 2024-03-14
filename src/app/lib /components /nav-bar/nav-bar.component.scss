@@ -1,0 +1,15 @@
+::ng-deep .p-menubar {
+    background-color: black;
+    padding: 16px;
+    border-radius: 0;
+
+    .p-menuitem-text {
+        color: white;
+    }
+
+    .p-menuitem-link:hover {
+        span {
+            color: #f96816 !important;
+        }
+    }
+}
