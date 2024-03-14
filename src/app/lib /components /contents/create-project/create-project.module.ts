@@ -8,7 +8,7 @@ import { MessageService } from 'primeng/api';
 import { DemographicDetailsComponent } from './demographic-details/demographic-details.component';
 import { ParentsAddressDetailsComponent } from './parents-address-details/parents-address-details.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
-
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
   imports: [
     CommonModule,
     StepsModule,
-    ToastModule
+    ToastModule,
+    ButtonModule
   ],
   providers:[]
 })
