@@ -18,11 +18,13 @@ import { HomeModule } from './lib /components /home/home.module';
 import { ProjectsComponent } from './lib /components /contents/projects/projects.component';
 import { TableModule } from 'primeng/table';
 import { MessageService } from 'primeng/api';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectsComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserAnimationsModule,
