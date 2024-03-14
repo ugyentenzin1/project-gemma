@@ -15,5 +15,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  sidebarVisible: boolean = false;
 
 }
