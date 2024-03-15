@@ -1,9 +1,36 @@
+<div class="rounded-md items-center my-16 p-16 mr-24 bg-white mt-16">
+    <h2 class="mt-16 mb-16">Demographic Details</h2>
+    <form [formGroup]="dempGraphicDetails" class="flex flex-wrap pl-16">     
+        <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
+            <input pInputText id="schoolName" class="w-full" formControlName="schoolName"/>
+            <label for="schoolName">School Name</label>
+        </div>
+        <div class="p-float-label w-[48%] mb-24 mt-16">
+            <input pInputText id="grade" class="w-full" formControlName="grade"/>
+            <label for="grade">Grade</label>
+        </div>
+        <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
+            <input pInputText id="house" class="w-full" formControlName="house"/>
+            <label for="house">House</label>
+        </div>
+        <div class="w-[48%] mb-24 mt-16">
+            <div class="flex-auto p-float-label">
+                <input pInputText id="subject" class="w-full" formControlName="subject"/>
+                <label for="subject" class="block mb-2">Subject</label>
+            </div>               
+        </div>
 
-
-<div class="flex justify-between rounded-md items-center my-16 p-16 mr-24 bg-white mt-16">
-    <p>demographic-details works!</p>
+        <div class="p-float-label w-[48%] mb-24 mt-16 mr-16">
+            <input pInputText id="noOfSubjectTakenByStudents" class="w-full" formControlName="noOfSubjectTakenByStudents"/>
+            <label for="noOfSubjectTakenByStudents">No Of Subjects</label>
+        </div>
+        <div class="p-float-label w-[48%] mb-24 mt-16">
+            <input pInputText id="previousSchool" class="w-full" formControlName="previousSchool"/>
+            <label for="noOfSubjectTakenByStudents">Previous School</label>
+        </div>
+    </form>
 </div>
 <div class="flex justify-between rounded-md items-center p-16 mr-24 bg-white mt-16">
-    <p-button>Cancel</p-button>
+    <p-button [outlined]="true">Cancel</p-button>
     <p-button>Continue</p-button>
 </div>

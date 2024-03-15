@@ -8,6 +8,9 @@ import { DemographicDetailsComponent } from './demographic-details/demographic-d
 import { ParentsAddressDetailsComponent } from './parents-address-details/parents-address-details.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     StepsModule,
     ToastModule,
-    ButtonModule
+    ButtonModule,
+    InputTextModule,
+    ReactiveFormsModule,
+    CalendarModule
   ],
   providers:[]
 })
