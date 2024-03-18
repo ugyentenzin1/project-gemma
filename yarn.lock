@@ -1292,6 +1292,11 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
+"@codewithdan/observable-store@^2.2.15":
+  version "2.2.15"
+  resolved "https://registry.npmjs.org/@codewithdan/observable-store/-/observable-store-2.2.15.tgz"
+  integrity sha512-LVCSMZzTCvoDo5n7YDmtIIEhTmvJ8O21k36Vwu/A4kumdXQ1YVs4sKoSK3vlINZPL4AYY2MRsBVtvre4QIETFw==
+
 "@colors/colors@^1.6.0":
   version "1.6.0"
   resolved "https://registry.npmjs.org/@colors/colors/-/colors-1.6.0.tgz"
@@ -6349,7 +6354,7 @@ rxfire@^6.0.5:
   resolved "https://registry.npmjs.org/rxfire/-/rxfire-6.0.5.tgz"
   integrity sha512-ycBsANGbya3GNtOBKzZVATLEV+0S9gUrlTfwnN15TCXtgG8OgIMAuv2k9+kMeVaevp/DRp1KT+vYf6Wkop6gvw==
 
-"rxjs@^6.0.0 || ^7.0.0", "rxjs@^6.0.0 || ^7.8.1", "rxjs@^6.5.3 || ^7.4.0", rxjs@^7.5.5, rxjs@~7.8.0, rxjs@7.8.1:
+"rxjs@^6.0.0 || ^7.0.0", "rxjs@^6.0.0 || ^7.8.1", "rxjs@^6.5.3 || ^7.4.0", rxjs@^7.5.5, "rxjs@>=6.4.0 <8", rxjs@~7.8.0, rxjs@7.8.1:
   version "7.8.1"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz"
   integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==

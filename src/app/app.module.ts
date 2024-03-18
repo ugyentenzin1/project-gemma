@@ -19,6 +19,7 @@ import { ProjectsComponent } from './lib /components /contents/projects/projects
 import { TableModule } from 'primeng/table';
 import { MessageService } from 'primeng/api';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HttpClientModule } from  '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ButtonModule,
     InputTextModule,
     HomeModule,
-    TableModule
+    TableModule,
+    HttpClientModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

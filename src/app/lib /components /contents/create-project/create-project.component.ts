@@ -62,10 +62,8 @@ export class CreateProjectComponent implements OnInit {
     if(index === 0 || index === undefined) return 
     if(index < 3) {
         this.items[index - 1]['done'] = true;
-    } else { 
-      this.items[index - 1]['done'] = true;
-    }
-
+    } 
+    
     this.items.forEach(val => {
       if (val['done'] === true) {
         document.getElementsByClassName('p-steps-number')[val['index']].innerHTML = '<i class="pi pi-check"></i>';
