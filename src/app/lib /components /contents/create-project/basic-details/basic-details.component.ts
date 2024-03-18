@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./basic-details.component.scss']
 })
 export class BasicDetailsComponent implements OnInit {
+
+  @Output() btnNext: EventEmitter<number> = new EventEmitter();
 
   constructor(private fb: FormBuilder,
     private router: Router) { }
@@ -23,6 +25,10 @@ export class BasicDetailsComponent implements OnInit {
   })
 
   ngOnInit(): void {
+  }
+
+  next() {
+    this.btnNext.emit();
   }
 
 }

@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
+import { StrepperComponent } from './strepper/strepper.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CalendarModule } from 'primeng/calendar';
     BasicDetailsComponent,
     ConfirmationComponent,
     DemographicDetailsComponent,
-    ParentsAddressDetailsComponent
+    ParentsAddressDetailsComponent,
+    StrepperComponent
   ],
   imports: [
     CommonModule,

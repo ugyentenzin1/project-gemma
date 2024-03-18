@@ -12,10 +12,10 @@ export class CreateProjectComponent implements OnInit {
   constructor(private messageService: MessageService,
     private router: Router) { }
 
-  activeIndex!: number;
+  activeIndex: number = 0;
 
   ngOnInit(): void {
-    this.messageService.add({severity: 'success', detail:' dadfa', summary: 'sersadf'})
+    this.messageService.add({severity: 'success', detail:' dadfa', summary: 'sersadf'});
   }
 
   items: MenuItem[] = [
@@ -55,11 +55,15 @@ export class CreateProjectComponent implements OnInit {
     },
   ]
 
+  routes:any[] = [this.items.forEach(val => val.routerLink)];
+
   stepChange(index: number) {
+
+    console.log(index, 'index')
+
     if(index === 0) return 
     if(index < 3) {
         this.items[index - 1]['done'] = true;
-
     } else { 
       this.items[index - 1]['done'] = true;
       this.items[index]['done'] = true;
@@ -68,7 +72,8 @@ export class CreateProjectComponent implements OnInit {
     this.items.forEach(val => {
       if (val['done'] === true) {
         document.getElementsByClassName('p-steps-number')[val['index']].innerHTML = "fini";
-      }
-    })
+      } 
+    });
+    this.router.navigate(['/home/add-student/'+this.items[index].routerLink])
   }
 }
