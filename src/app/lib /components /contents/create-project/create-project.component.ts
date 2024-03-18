@@ -64,8 +64,7 @@ export class CreateProjectComponent implements OnInit {
         this.items[index - 1]['done'] = true;
     } else { 
       this.items[index - 1]['done'] = true;
-      this.items[index]['done'] = true;
-    } 
+    }
 
     this.items.forEach(val => {
       if (val['done'] === true) {
@@ -75,7 +74,12 @@ export class CreateProjectComponent implements OnInit {
     this.router.navigate(['/home/add-student/'+this.items[index].routerLink])
   }
 
-  cancel() {
-    alert('Navigating to previous state!!');
+  cancel(index: number) {
+    if (index > 0 && index < this.items.length) {
+      alert('Navigating to previous state!!');
+      this.router.navigate(['/home/add-student/' + this.items[index - 1].routerLink]);
+    } else {
+      alert('Cannot navigate to previous state. Index out of range.');
+    }
   }
 }

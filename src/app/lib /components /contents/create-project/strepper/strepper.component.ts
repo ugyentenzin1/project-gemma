@@ -26,8 +26,10 @@ export class StrepperComponent implements OnInit {
     event < 3 && this.activeIndexChange.emit(event);
   }
 
-  cancel() {
-    this.goBack.emit();
+  cancel(event: number) {
+    console.log(event, 'cancel')
+    event = this.activeIndex;
+    event < 3 && this.goBack.emit(event = event - 1);
   }
 
   continueStepper(): void {
