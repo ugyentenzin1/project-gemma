@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-basic-details',
@@ -8,7 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class BasicDetailsComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private router: Router) { }
 
   basicDetails: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -22,4 +24,5 @@ export class BasicDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 }

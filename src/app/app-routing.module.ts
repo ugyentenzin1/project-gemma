@@ -21,9 +21,10 @@ const routes: Routes = [
         { path:'',
           loadChildren: ()=> import('./lib /components /home/home.module').then(m => m.HomeModule)
         },
+        { path: '', loadChildren: (): any => import('../app/lib /components /contents/create-project/create-project.module').then(val => val.CreateProjectModule) },
+
         { path: 'add-student', component: CreateProjectComponent, 
                 children: [
-                  { path: '', loadChildren: (): any => import('../app/lib /components /contents/create-project/create-project.module').then(val => val.CreateProjectModule) },
                   { path: 'basic-details', component: BasicDetailsComponent},
                   { path: '', redirectTo: 'basic-details', pathMatch: 'full'},
                   { path: 'demographic-details', component: DemographicDetailsComponent },
