@@ -1,4 +1,5 @@
-<app-strepper [data]="items" (activeIndexChange)="stepChange($event)">
+<app-strepper [data]="items" (activeIndexChange)="stepChange($event)"
+(goBack)="cancel()">
     <router-outlet></router-outlet>
 </app-strepper>
 

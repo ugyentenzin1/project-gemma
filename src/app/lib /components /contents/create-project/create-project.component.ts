@@ -1,5 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
 
 @Component({
@@ -12,7 +13,6 @@ export class CreateProjectComponent implements OnInit {
   constructor(private messageService: MessageService,
     private router: Router) { }
 
-  activeIndex: number = 0;
 
   ngOnInit(): void {
     this.messageService.add({severity: 'success', detail:' dadfa', summary: 'sersadf'});
@@ -58,10 +58,8 @@ export class CreateProjectComponent implements OnInit {
   routes:any[] = [this.items.forEach(val => val.routerLink)];
 
   stepChange(index: number) {
-
-    console.log(index, 'index')
-
-    if(index === 0) return 
+    console.log(index)
+    if(index === 0 || index === undefined) return 
     if(index < 3) {
         this.items[index - 1]['done'] = true;
     } else { 
@@ -71,9 +69,13 @@ export class CreateProjectComponent implements OnInit {
 
     this.items.forEach(val => {
       if (val['done'] === true) {
-        document.getElementsByClassName('p-steps-number')[val['index']].innerHTML = "fini";
+        document.getElementsByClassName('p-steps-number')[val['index']].innerHTML = '<i class="pi pi-check"></i>';
       } 
     });
     this.router.navigate(['/home/add-student/'+this.items[index].routerLink])
+  }
+
+  cancel() {
+    alert('Navigating to previous state!!');
   }
 }

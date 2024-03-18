@@ -2,13 +2,13 @@
     <div>
         <div class="card">
             <p-toast></p-toast>
-            <p-steps [model]="data" [readonly]="false"
+            <p-steps [model]="data" [readonly]="true"
                 (activeIndexChange)="next($event)"></p-steps>
         </div>
     </div>
 </div>
 <ng-content></ng-content>
 <div class="flex justify-between rounded-md items-center p-16 mr-24 bg-white mt-16">
-    <p-button [outlined]="true">Cancel</p-button>
-    <p-button>Continue</p-button>
+    <p-button [outlined]="true" (click)="cancel()">Cancel</p-button>
+    <p-button (click)="continueStepper()">Continue</p-button>
 </div>
