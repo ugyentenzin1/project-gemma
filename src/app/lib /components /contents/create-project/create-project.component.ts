@@ -1,7 +1,9 @@
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
+import { StateBaseService } from 'src/app/services /state.base.service';
 
 @Component({
   selector: 'app-create-project',
@@ -10,12 +12,18 @@ import { MenuItem, MessageService } from 'primeng/api';
 })
 export class CreateProjectComponent implements OnInit {
 
+
+
   constructor(private messageService: MessageService,
-    private router: Router) { }
+    private router: Router, 
+    private baseStateService: StateBaseService<any>,
+    private http: HttpClient) {
+  }
 
 
   ngOnInit(): void {
     this.messageService.add({severity: 'success', detail:' dadfa', summary: 'sersadf'});
+    console.log(this.baseStateService.stateHistory)
   }
 
   items: MenuItem[] = [
@@ -79,5 +87,9 @@ export class CreateProjectComponent implements OnInit {
     } else {
       alert('Cannot navigate to previous state. Index out of range.');
     }
+  }
+
+  getAnime() {
+    this.baseStateService.stateChanged.subscribe(val => console.log(val))
   }
 }
