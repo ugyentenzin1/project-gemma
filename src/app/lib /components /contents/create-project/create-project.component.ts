@@ -107,7 +107,7 @@ export class CreateProjectComponent implements OnInit {
 
   getUsers(value: any) {
     this.baseStateService.add(value);
-    let data = this.baseStateService.getSpecificState(ProjectsEnums.ADD_CUSTOMER);
+    let data = this.baseStateService.getSpecificState(ProjectsEnums.CUSTOMER);
     console.log('click',data)
   }
 

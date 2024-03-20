@@ -37,13 +37,8 @@ export class StateBaseService<T> extends ObservableStore<any>  {
 
   apiUrl = 'https://randomuser.me/api/';
 
-  getText(state: string) {
-    return this.getState().customers;    
-  }
-
   getSpecificState<U>(state?: string): U | object {
     const currentState = this.getState();
-    console.log(currentState, state, 'hs')
     if (state) {
       return currentState[state];
     }
@@ -53,7 +48,7 @@ export class StateBaseService<T> extends ObservableStore<any>  {
   add(customer: any) {
     let state = this.getState();
     state.customers.push(customer);
-    this.setState({ add_customers: state.customers }, ProjectsEnums.ADD_CUSTOMER);
+    this.setState({ customers: state.customers }, ProjectsEnums.CUSTOMER);
   }
 
 
