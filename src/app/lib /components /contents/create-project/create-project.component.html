@@ -3,5 +3,7 @@
     <router-outlet></router-outlet>
 </app-strepper>
 
+<input pInputText [value]="" #value>
 
-<button pButton (click)="getAnime()">Get Test</button>
+<button (click)="removeUser()" pButton > removeUser</button>
+<button (click)="getUsers(value.value)" pButton >Get User</button>
