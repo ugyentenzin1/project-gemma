@@ -86,6 +86,8 @@ export class CreateProjectComponent implements OnInit {
     if (index === 0 || index === undefined) return
     if (index < 3) {
       this.items[index - 1]['done'] = true;
+    } else {
+      this.items[index - 1]['done'] = true
     }
 
     this.items.forEach(val => {
