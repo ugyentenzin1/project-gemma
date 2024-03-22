@@ -5,7 +5,6 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { Observable, Subscription, map, tap } from 'rxjs';
 import { Customer, StateBaseService } from 'src/app/services /state.base.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import {baseURL} from ''
 
 @Component({
   selector: 'app-create-project',
@@ -43,9 +42,6 @@ export class CreateProjectComponent implements OnInit {
     }
   }
 
-  get():Observable<any> {
-    return this.http.get()
-  }
 
   items: MenuItem[] = [
     {
