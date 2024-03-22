@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ObservableStore } from '@codewithdan/observable-store';
 import { HttpClient } from '@angular/common/http';
-import { Observable, filter, map } from 'rxjs';
-import { Projects } from '../interfaces/interfaceStore';
 import { ProjectsEnums } from '../enums /projects';
 
 
@@ -20,13 +18,7 @@ export class StateBaseService<T> extends ObservableStore<any>  {
     super({ trackStateHistory: true, logStateChanges: true });
 
     const initialState = {
-      customers: [
-        {name: 'sona', phoneNo: 17443788, age: 24, occupation: 'Software Engineer'},
-        {name: 'sona', phoneNo: 17443788, age: 24, occupation: 'Software Engineer'},
-        {name: 'sona', phoneNo: 17443788, age: 24, occupation: 'Software Engineer'},
-        {name: 'sona', phoneNo: 17443788, age: 24, occupation: 'Software Engineer'},
-        {name: 'sona', phoneNo: 17443788, age: 24, occupation: 'Software Engineer'}
-      ],
+      customers: {},
       customer: null
     }
     this.setState(initialState, 'INIT_STATE');
@@ -34,6 +26,7 @@ export class StateBaseService<T> extends ObservableStore<any>  {
 
     console.log(this.stateHistory, 'History', this.getState())
   }
+
 
   apiUrl = 'https://randomuser.me/api/';
 
@@ -45,10 +38,9 @@ export class StateBaseService<T> extends ObservableStore<any>  {
     return currentState;
   }
 
-  add(customer: any) {
+  add<T>(customer: any) {
     let state = this.getState();
-    state.customers.push(customer);
-    this.setState({ customers: state.customers }, ProjectsEnums.CUSTOMER);
+    this.setState({customers: ({...state.customers, ...customer})}, ProjectsEnums.CUSTOMER);
   }
 
 

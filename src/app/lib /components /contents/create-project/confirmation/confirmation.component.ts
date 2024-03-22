@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateBaseService } from 'src/app/services /state.base.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmationComponent implements OnInit {
 
-  constructor() { }
+  data!:any;
+
+  constructor(private stateBaseService: StateBaseService<any>) { }
 
   ngOnInit(): void {
+    this.stateBaseService.stateChanged.subscribe(val => this.data = val.customers)
   }
 
 }

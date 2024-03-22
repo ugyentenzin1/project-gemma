@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
-import { Subscription, map, tap } from 'rxjs';
+import { Observable, Subscription, map, tap } from 'rxjs';
 import { ProjectsEnums } from 'src/app/enums /projects';
 import { Customer, StateBaseService } from 'src/app/services /state.base.service';
 
@@ -16,13 +16,15 @@ export class CreateProjectComponent implements OnInit {
 
   storeSub!: Subscription;
   customers!: Customer<any>[];
-  
+
 
   constructor(private messageService: MessageService,
     private router: Router,
     private baseStateService: StateBaseService<any>,
     private http: HttpClient) {
   }
+
+  apiUrl = 'https://project-gama-adcd9-default-rtdb.asia-southeast1.firebasedatabase.app/';
 
 
   ngOnInit(): void {
@@ -34,13 +36,21 @@ export class CreateProjectComponent implements OnInit {
         this.customers = state.customers;
       }
     });
+
+    
+    this.getData().subscribe(val => console.log(val))
+
   }
 
   ngOnDestroy() {
     if (this.storeSub) {
-        this.storeSub.unsubscribe();
-    }        
-}
+      this.storeSub.unsubscribe();
+    }
+  }
+
+  getData():Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
 
   items: MenuItem[] = [
     {
@@ -79,8 +89,6 @@ export class CreateProjectComponent implements OnInit {
     },
   ]
 
-  routes: any[] = [this.items.forEach(val => val.routerLink)];
-
   stepChange(index: number) {
     console.log(index)
     if (index === 0 || index === undefined) return
@@ -105,15 +113,5 @@ export class CreateProjectComponent implements OnInit {
     } else {
       alert('Cannot navigate to previous state. Index out of range.');
     }
-  }
-
-  getUsers(value: any) {
-    this.baseStateService.add(value);
-    let data = this.baseStateService.getSpecificState(ProjectsEnums.CUSTOMER);
-    console.log('click',data)
-  }
-
-  removeUser() {
-    this.baseStateService.remove()
   }
 }

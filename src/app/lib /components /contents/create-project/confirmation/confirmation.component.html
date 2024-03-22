@@ -1,4 +1,46 @@
+<div class="flex flex-col justify-start rounded-md my-16 pl-32 py-16 mr-24 bg-white mt-16">
+    <h1 class="mb-16">Confirmation Page</h1>
+    <div class="flex justify-between pr-32" *ngIf="data">
+        <div class="pl-16">
+            <h2 class="mb-8">Basic Details</h2>
+            <div class="mb-16 pl-8">
+                <p>Name: <span>{{data.basicDetails.name}}</span></p>
+                <p>Date of Birth: <span>{{data.basicDetails.dateOfBirth}}</span></p>
+                <p>Student ID: <span>{{data.basicDetails.studentId}}</span></p>
+                <p>Citizen ID: <span>{{data.basicDetails.citizenId}}</span></p>
+                <p>Dzongkhag: <span>{{data.basicDetails.dzongkhag}}</span></p>
+                <p>Gewog: <span>{{data.basicDetails.gewog}}</span></p>
+                <p>Village: <span>{{data.basicDetails.village}}</span></p>
 
-<div class="flex justify-between rounded-md items-center my-16 p-16 mr-24 bg-white mt-16">
-    <p>confirmation works!</p>
+            </div>
+        </div>
+
+        <div class="pl-16">
+            <h2 class="mb-8">Demographic Details</h2>
+            <div class="mb-16 pl-8">
+                <p>School Name: <span>{{data.demoGraphic.schoolName}}</span></p>
+                <p>Grade: <span>{{data.demoGraphic.grade}}</span></p>
+                <p>House: <span>{{data.demoGraphic.house}}</span></p>
+                <p>Subject: <span>{{data.demoGraphic.subject}}</span></p>
+                <p>Subject Taken: <span>{{data.demoGraphic.noOfSubjectTakenByStudents}}</span></p>
+                <p>Previous School: <span>{{data.demoGraphic.previousSchool}}</span></p>
+
+            </div>
+        </div>
+
+        <div class="pl-16">
+            <h2 class="mb-8">Parents/ Guidance Details</h2>
+            <div class="mb-16 pl-8">
+                <p>Name: <span>{{data.parentDetails.name}}</span></p>
+                <p>Date Of Birth: <span>{{data.parentDetails.dateOfBirth}}</span></p>
+                <p>Martial Status: <span>{{data.parentDetails.martialStatus}}</span></p>
+                <p>Citizen ID: <span>{{data.parentDetails.citizenId}}</span></p>
+                <p>Contact Number: <span>{{data.parentDetails.contactNumber}}</span></p>
+                <p>Dzongkhag: <span>{{data.parentDetails.dzongkhag}}</span></p>
+                <p>Gewog: <span>{{data.parentDetails.gewog}}</span></p>
+                <p>Village: <span>{{data.parentDetails.village}}</span></p>
+
+            </div>
+        </div>
+    </div>
 </div>
