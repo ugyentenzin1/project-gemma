@@ -7,6 +7,6 @@ export const environment = {
       storageBucket: "project-gama-adcd9.appspot.com",
       messagingSenderId: "204635875801",
       appId: "1:204635875801:web:d2cba2b537d4c7f122d1c8",
-      measurementId: "G-6TY10MZWHG"
+      measurementId: "G-6TY10MZWHG",
     }
   };

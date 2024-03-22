@@ -1,11 +1,11 @@
-import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
 import { Observable, Subscription, map, tap } from 'rxjs';
-import { ProjectsEnums } from 'src/app/enums /projects';
 import { Customer, StateBaseService } from 'src/app/services /state.base.service';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import {baseURL} from ''
 
 @Component({
   selector: 'app-create-project',
@@ -21,10 +21,9 @@ export class CreateProjectComponent implements OnInit {
   constructor(private messageService: MessageService,
     private router: Router,
     private baseStateService: StateBaseService<any>,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private db: AngularFireDatabase) {
   }
-
-  apiUrl = 'https://project-gama-adcd9-default-rtdb.asia-southeast1.firebasedatabase.app/';
 
 
   ngOnInit(): void {
@@ -35,11 +34,7 @@ export class CreateProjectComponent implements OnInit {
       if (state) {
         this.customers = state.customers;
       }
-    });
-
-    
-    this.getData().subscribe(val => console.log(val))
-
+    }); 
   }
 
   ngOnDestroy() {
@@ -48,8 +43,8 @@ export class CreateProjectComponent implements OnInit {
     }
   }
 
-  getData():Observable<any> {
-    return this.http.get(this.apiUrl);
+  get():Observable<any> {
+    return this.http.get()
   }
 
   items: MenuItem[] = [
