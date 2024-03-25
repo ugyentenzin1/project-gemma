@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { ObservableStore } from '@codewithdan/observable-store';
 import { HttpClient } from '@angular/common/http';
 import { ProjectsEnums } from '../enums /projects';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Subscription } from 'rxjs';
 
 
 
@@ -14,17 +16,19 @@ export interface Customer<T> {
 })
 export class StateBaseService<T> extends ObservableStore<any>  {
 
-  constructor(private http: HttpClient) {
+  data: any; // This will hold your transformed data
+  constructor(private http: HttpClient, private db: AngularFireDatabase) {
     super({ trackStateHistory: true, logStateChanges: true });
+      
+   this.db.list('/').valueChanges().subscribe(val => {
+      try {
+        console.log(val)
+        this.setState({data: val}, "INITIAL_STATE")
+      } catch (error) {
+        console.log(error, 'error')
+      }
+    })
 
-    const initialState = {
-      customers: {},
-      customer: null
-    }
-    this.setState(initialState, 'INIT_STATE');
-
-
-    console.log(this.stateHistory, 'History', this.getState())
   }
 
 

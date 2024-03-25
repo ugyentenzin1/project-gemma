@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
-import { Observable, Subscription, map, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Customer, StateBaseService } from 'src/app/services /state.base.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
