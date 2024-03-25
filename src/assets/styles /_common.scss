@@ -37,3 +37,8 @@
     border-color: #ff7b39;
     color: #ff7b39;
   }
+
+
+  ::ng-deep .p-calendar {
+    width: 100% !important;
+}

@@ -1,12 +1,15 @@
+import { FIRBASE_CONFIG } from "env";
+
 export const environment = {
     production: false,
     firebaseConfig : {
-      apiKey: "AIzaSyCa-18Q3VfFUQaXxH-NLy6wBXJUkGQF-iQ",
-      authDomain: "project-gama-adcd9.firebaseapp.com",
-      projectId: "project-gama-adcd9",
-      storageBucket: "project-gama-adcd9.appspot.com",
-      messagingSenderId: "204635875801",
-      appId: "1:204635875801:web:d2cba2b537d4c7f122d1c8",
-      measurementId: "G-6TY10MZWHG"
+      apiKey: FIRBASE_CONFIG.apiKey,
+      authDomain: FIRBASE_CONFIG.authDomain,
+      databaseURL: FIRBASE_CONFIG.databaseURL,
+      projectId: FIRBASE_CONFIG.projectId,
+      storageBucket: FIRBASE_CONFIG.storageBucket,
+      messagingSenderId: FIRBASE_CONFIG.messagingSenderId,
+      appId: FIRBASE_CONFIG.appId,
+      measurementId: FIRBASE_CONFIG.measurementId,
     }
   };

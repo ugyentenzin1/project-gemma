@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateBaseService } from 'src/app/services /state.base.service';
 
 @Component({
   selector: 'app-projects',
@@ -54,7 +55,7 @@ export class ProjectsComponent implements OnInit {
     {feild: 'action', header: 'Action'}
   ];
 
-  constructor() { }
+  constructor(private stateSevice: StateBaseService<any>) { }
 
   ngOnInit(): void {
   }

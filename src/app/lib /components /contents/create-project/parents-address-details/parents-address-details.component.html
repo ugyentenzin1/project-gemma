@@ -1,8 +1,45 @@
 
-<div class="flex justify-between rounded-md items-center my-16 p-16 mr-24 bg-white mt-16">
-    <p>parents-address-details works!</p>
-</div>
-<div class="flex justify-between rounded-md items-center p-16 mr-24 bg-white mt-16">
-    <p-button>Cancel</p-button>
-    <p-button>Continue</p-button>
+<div class="rounded-md items-center my-16 p-16 mr-24 bg-white mt-16">
+    <h2 class="mt-16 mb-16">Parents/Guidiance Details</h2>
+    <form [formGroup]="parentsDetails" class="flex flex-wrap pl-16">     
+        <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
+            <input pInputText id="name" class="w-full" formControlName="name"/>
+            <label for="name">Name</label>
+        </div>
+        <div class="p-float-label w-[48%] mb-24 mt-16">
+            <input pInputText id="studentId" class="w-full" formControlName="martialStatus"/>
+            <label for="studentId">StudentId</label>
+        </div>
+        <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
+            <input pInputText id="citizenId" class="w-full" formControlName="citizenId"/>
+            <label for="citizenId">Citizen Id</label>
+        </div>
+        <div class="w-[48%] mb-24 mt-16">
+            <div class="flex-auto p-float-label">
+                <p-calendar class="w-full" [inputStyle]="{class: 'w-full'}" placeholder="Date of Birth"  formControlName="dateOfBirth" [showIcon]="true" inputId="dateOfBirth"></p-calendar>
+                <label for="dateOfBirth" class="block mb-2"> Date Of Birth </label>
+            </div>               
+        </div>
+        <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
+            <input pInputText id="contactNumber" class="w-full" formControlName="contactNumber"/>
+            <label for="contactNumber">Contact Number</label>
+        </div>
+
+        <div class="w-full my-16">
+            <h4>Permanant Address</h4>
+        </div>
+
+        <div class="p-float-label w-[48%] mb-24 mt-16 mr-16">
+            <input pInputText id="dzongkhag" class="w-full" formControlName="dzongkhag"/>
+            <label for="dzongkhag">Dzongkhag</label>
+        </div>
+        <div class="p-float-label w-[48%] mb-24 mt-16">
+            <input pInputText id="gewog" class="w-full" formControlName="gewog"/>
+            <label for="gewog">Gewog</label>
+        </div>
+        <div class="p-float-label w-[48%] mb-24 mt-16">
+            <input pInputText id="village" class="w-full" formControlName="village"/>
+            <label for="village">village</label>
+        </div>
+    </form>
 </div>

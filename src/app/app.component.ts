@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,20 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'project_gama';
 
-  signUpButton = document.getElementById('signUp');
-  signInButton = document.getElementById('signIn');
-  container: HTMLElement | null = document.getElementById('container');
+  data: any;
 
+  constructor(private db: AngularFireDatabase){}
 
   ngOnInit(): void {
-     
+    this.db.list('/').valueChanges().subscribe(val => console.log(val))
   }
 
-  signIn() {
-    this.container?.classList.remove("right-panel-active");
-  }
-
-  signUp() {
-     this.container?.classList.remove("right-panel-active");
-  } 
 }

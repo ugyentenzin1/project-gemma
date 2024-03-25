@@ -6,7 +6,7 @@
         <p-button routerLink="/home/add-student">Add Student</p-button>
     </div>
     <div class="card">
-        <p-table [columns]="cols" styleClass="p-datatable-striped" [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+        <p-table [columns]="" styleClass="p-datatable-striped" [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
