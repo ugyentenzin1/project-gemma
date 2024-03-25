@@ -57,6 +57,8 @@ export class ProjectsComponent implements OnInit {
     {feild: 'action', header: 'Action'}
   ];
 
+  
+
   constructor(private stateSevice: StateBaseService<any>, 
     private db: AngularFireDatabase) { }
 
