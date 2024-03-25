@@ -81,7 +81,6 @@ export class CreateProjectComponent implements OnInit {
   ]
 
   stepChange(index: number) {
-    console.log(index)
     if (index === 0 || index === undefined) return
     if (index < 3) {
       this.items[index - 1]['done'] = true;

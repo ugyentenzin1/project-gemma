@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { map, tap } from 'rxjs';
 import { StateBaseService } from 'src/app/services /state.base.service';
 
 @Component({
@@ -55,9 +57,13 @@ export class ProjectsComponent implements OnInit {
     {feild: 'action', header: 'Action'}
   ];
 
-  constructor(private stateSevice: StateBaseService<any>) { }
+  constructor(private stateSevice: StateBaseService<any>, 
+    private db: AngularFireDatabase) { }
 
   ngOnInit(): void {
+    this.db.list('/').valueChanges().subscribe(val => this.stateSevice.updateState(val,'update_state'));
+
+    this.stateSevice.getStateU('update_state');
   }
 
 }

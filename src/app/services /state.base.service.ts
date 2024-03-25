@@ -16,30 +16,27 @@ export interface Customer<T> {
 })
 export class StateBaseService<T> extends ObservableStore<any>  {
 
-  data: any; // This will hold your transformed data
-  constructor(private http: HttpClient, private db: AngularFireDatabase) {
-    super({ trackStateHistory: true, logStateChanges: true });
-      
-   this.db.list('/').valueChanges().subscribe(val => {
-      try {
-        console.log(val)
-        this.setState({data: val}, "INITIAL_STATE")
-      } catch (error) {
-        console.log(error, 'error')
-      }
-    })
+  data: any; 
 
+  constructor(private http: HttpClient, private db: AngularFireDatabase) {
+    super({ trackStateHistory: true, logStateChanges: true });     
+    this.initialState();
   }
 
-
-  apiUrl = 'https://randomuser.me/api/';
-
-  getSpecificState<U>(state?: string): U | object {
-    const currentState = this.getState();
-    if (state) {
-      return currentState[state];
+  initialState() {
+    const state: any = {
+      data: undefined
     }
-    return currentState;
+
+    this.setState(state, 'initial_state');
+  }
+
+  updateState(val: any, label: string) {
+    this.setState(val , label);
+  }
+
+  getStateU(state: string){
+    this.getState()[state];
   }
 
   add<T>(customer: any) {
