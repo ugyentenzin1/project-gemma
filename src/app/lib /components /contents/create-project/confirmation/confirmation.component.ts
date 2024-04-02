@@ -14,6 +14,10 @@ export class ConfirmationComponent implements OnInit {
 
   ngOnInit(): void {
     this.stateBaseService.stateChanged.subscribe(val => this.data = val.customers);
+
+
   }
+
+  
 
 }
