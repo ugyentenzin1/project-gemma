@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DemographicDetails } from 'src/app/interfaces/interfaceStore';
 import { StateBaseService } from 'src/app/services /state.base.service';
 
@@ -10,7 +11,7 @@ import { StateBaseService } from 'src/app/services /state.base.service';
 })
 export class DemographicDetailsComponent implements OnInit, OnDestroy {
 
-  constructor(private fb: FormBuilder, private stateBaseService: StateBaseService<any>) { }
+  constructor(private router: Router, private fb: FormBuilder, private stateBaseService: StateBaseService<any>) { }
 
   ngOnInit(): void {
     this.dempGraphicDetails.patchValue(this.dempGraphicDetails.value)
@@ -29,5 +30,9 @@ export class DemographicDetailsComponent implements OnInit, OnDestroy {
     noOfSubjectTakenByStudents: ['', Validators.required],
     previousSchool: ['', Validators.required]
   })
+
+  continue() {
+    this.router.navigate(['/home/add-student/parents-details'])
+  }
 
 }

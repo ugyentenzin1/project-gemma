@@ -38,4 +38,8 @@ export class BasicDetailsComponent implements OnInit, OnDestroy {
     this.btnNext.emit();
   }
 
+  continue() {
+    this.router.navigate(['/home/add-student/demographic-details'])
+  }
+
 }
