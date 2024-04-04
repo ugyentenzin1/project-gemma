@@ -19,7 +19,7 @@ export class BasicDetailsComponent implements OnInit, OnDestroy {
 
   basicDetails: FormGroup = this.fb.group({
     name: ['', Validators.required],
-    dateOfBirth: ['', Validators.required],
+    dateOfBirth: [ Date, Validators.required],
     studentId: ['', Validators.required],
     citizenId: [''],
     dzongkhag: ['', Validators.required],

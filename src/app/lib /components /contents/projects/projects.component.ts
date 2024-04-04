@@ -12,7 +12,7 @@ export class ProjectsComponent implements OnInit {
 
   products!: any;
 
-  cols: any[] = ['Std Id', 'Name', 'Citizen', 'DOB', 'Dzongkhag',
+  cols: any[] = ['Std Id', 'Name', 'Citizen Id', 'Dzongkhag',
 'Gewong', 'Village', 'School Name', 'No Of Subject', 'Stream', 'Previous School',
 'Grade', 'House', 'Parents Name', 'Parents CitizenId', 'Parent Cont. no', 
 'Martial Status', 'Parent Dzongkhag', 'Parents Gewog', 'Product Village', 'Actions'];
