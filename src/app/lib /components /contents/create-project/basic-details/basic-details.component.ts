@@ -19,7 +19,7 @@ export class BasicDetailsComponent implements OnInit, OnDestroy {
 
   basicDetails: FormGroup = this.fb.group({
     name: ['', Validators.required],
-    dateOfBirth: ['', Validators.required],
+    dateOfBirth: [ Date, Validators.required],
     studentId: ['', Validators.required],
     citizenId: [''],
     dzongkhag: ['', Validators.required],
@@ -36,6 +36,10 @@ export class BasicDetailsComponent implements OnInit, OnDestroy {
 
   next() {
     this.btnNext.emit();
+  }
+
+  continue() {
+    this.router.navigate(['/home/add-student/demographic-details'])
   }
 
 }

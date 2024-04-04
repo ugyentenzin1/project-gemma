@@ -6,28 +6,42 @@
         <p-button routerLink="/home/add-student">Add Student</p-button>
     </div>
     <div class="card">
-        <p-table [columns]="" styleClass="p-datatable-striped" [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+        <p-table [columns]="cols" styleClass="p-datatable-striped" [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template pTemplate="header" let-columns>
                 <tr>
-                    <th *ngFor="let col of columns">
-                        {{ col.header }}
+                    <th *ngFor="let col of columns" class="text-nowrap">
+                        {{ col }}
                     </th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-rowData let-columns="columns">
-                <tr>
-                    <td *ngFor="let col of columns">
-                        {{ rowData[col.field] }}
-                    </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-product>
                 <tr>
-                    <td>{{product.code}}</td>
-                    <td>{{product.name}}</td>
-                    <td>{{product.category}}</td>
-                    <td>{{product.quantity}}</td>
-                    <td>
+                    <ng-container *ngIf="product.basicDetails as product">
+                        <td class="text-nowrap">{{product.studentId}}</td>
+                        <td class="text-nowrap">{{product.name}}</td>
+                        <td class="text-nowrap">{{product.citizenId}}</td>
+                        <td class="text-nowrap">{{product.dzongkhag}}</td>
+                        <td class="text-nowrap">{{product.gewog}}</td>
+                        <td class="text-nowrap">{{product.village}}</td>
+                    </ng-container>
+                    <ng-container *ngIf="product.demoGraphicDetails as product">
+                        <td class="text-nowrap">{{product.schoolName}}</td>
+                        <td class="text-nowrap">{{product.noOfSubjectTakenByStudents}}</td>
+                        <td class="text-nowrap">{{product.subject}}</td>
+                        <td class="text-nowrap">{{product.previousSchool}}</td>
+                        <td class="text-nowrap">{{product.grade}}</td>
+                        <td class="text-nowrap">{{product.house}}</td>
+                    </ng-container>
+                    <ng-container *ngIf="product.parentsDetails as product">
+                        <td class="text-nowrap">{{product.name}}</td>
+                        <td class="text-nowrap">{{product.citizenId}}</td>
+                        <td class="text-nowrap">{{product.contactNumber}}</td>
+                        <td class="text-nowrap">{{product.martialStatus}}</td>
+                        <td class="text-nowrap">{{product.dzongkhag}}</td>
+                        <td class="text-nowrap">{{product.gewog}}</td>
+                        <td class="text-nowrap">{{product.village}}</td>
+                    </ng-container>
+                    <td class="flex justify-between" *ngIf="products.length">
                         <p-button icon="pi pi-pencil"></p-button>
                         <p-button icon="pi pi-pencil" class="ml-16"></p-button>
                     </td>

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DemographicDetails } from 'src/app/interfaces/interfaceStore';
 import { StateBaseService } from 'src/app/services /state.base.service';
 
@@ -10,11 +11,12 @@ import { StateBaseService } from 'src/app/services /state.base.service';
 })
 export class ParentsAddressDetailsComponent implements OnInit, OnDestroy {
 
-  constructor(private fb: FormBuilder, private stateBaseService: StateBaseService<any>) { }
+  constructor(private fb: FormBuilder,
+    private router: Router,
+     private stateBaseService: StateBaseService<any>) { }
 
   parentsDetails: FormGroup = this.fb.group({
     name: ['', Validators.required],
-    dateOfBirth: ['', Validators.required],
     martialStatus: ['', Validators.required],
     citizenId: [''],
     contactNumber: ['', Validators.required],
@@ -22,11 +24,17 @@ export class ParentsAddressDetailsComponent implements OnInit, OnDestroy {
     gewog: ['', Validators.required],
     village: ['', Validators.required],
   })
+
+  status: any[] = [{name: 'Married'}, {name: 'Single'}, {name: 'Divorce'}];
   
   ngOnInit(): void {
   }
 
   ngOnDestroy(): void {
     this.stateBaseService.add<DemographicDetails>({parentsDetails:this.parentsDetails?.value});  
+  }
+
+  continue() {
+    this.router.navigate(['/home/add-student/confirmation']);
   }
 }

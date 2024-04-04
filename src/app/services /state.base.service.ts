@@ -20,7 +20,7 @@ export class StateBaseService<T> extends ObservableStore<any>  {
   constructor(private http: HttpClient, private db: AngularFireDatabase) {
     super({ trackStateHistory: true, logStateChanges: true });
       
-   this.db.list('/').valueChanges().subscribe(val => {
+   this.db.list('/users').valueChanges().subscribe(val => {
       try {
         console.log(val)
         this.setState({data: val}, "INITIAL_STATE")
@@ -46,7 +46,6 @@ export class StateBaseService<T> extends ObservableStore<any>  {
     let state = this.getState();
     this.setState({customers: ({...state.customers, ...customer})}, ProjectsEnums.CUSTOMER);
   }
-
 
   remove() {
     let state = this.getState();

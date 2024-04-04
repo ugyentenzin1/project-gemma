@@ -1,28 +1,27 @@
 
-<div class="rounded-md items-center my-16 p-16 mr-24 bg-white mt-16">
-    <h2 class="mt-16 mb-16">Parents/Guidiance Details</h2>
-    <form [formGroup]="parentsDetails" class="flex flex-wrap pl-16">     
+
+    <form [formGroup]="parentsDetails" class="flex flex-wrap mt-24 mr-24"> 
+    
+    
+        
+        <div class="flex flex-wrap pl-16  bg-white rounded-[8px]">
+        
+        <h2 class="mt-16 mb-16 w-full">Parents/Guidiance Details</h2>    
         <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
             <input pInputText id="name" class="w-full" formControlName="name"/>
             <label for="name">Name</label>
         </div>
         <div class="p-float-label w-[48%] mb-24 mt-16">
-            <input pInputText id="studentId" class="w-full" formControlName="martialStatus"/>
-            <label for="studentId">StudentId</label>
+            <p-dropdown [options]="status" formArrayName="martialStatus" optionLabel="name"
+             [showClear]="true" [placeholder]="'Martial Status'"></p-dropdown> 
         </div>
         <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
-            <input pInputText id="citizenId" class="w-full" formControlName="citizenId"/>
-            <label for="citizenId">Citizen Id</label>
+            <input id="citizenId" pInputText id="citizenId" class="w-full" formControlName="citizenId"/>
+            <label for="citizenId"> Citizen Id</label>
         </div>
-        <div class="w-[48%] mb-24 mt-16">
-            <div class="flex-auto p-float-label">
-                <p-calendar class="w-full" [inputStyle]="{class: 'w-full'}" placeholder="Date of Birth"  formControlName="dateOfBirth" [showIcon]="true" inputId="dateOfBirth"></p-calendar>
-                <label for="dateOfBirth" class="block mb-2"> Date Of Birth </label>
-            </div>               
-        </div>
-        <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
-            <input pInputText id="contactNumber" class="w-full" formControlName="contactNumber"/>
-            <label for="contactNumber">Contact Number</label>
+        <div class="p-float-label w-[48%] mb-24 mt-16">
+            <input id="contactNumber" pInputText id="contactNumber" class="w-full" formControlName="contactNumber"/>
+            <label for="contactNumber">Contact Number</label>              
         </div>
 
         <div class="w-full my-16">
@@ -41,5 +40,10 @@
             <input pInputText id="village" class="w-full" formControlName="village"/>
             <label for="village">village</label>
         </div>
+        </div>
+
+        <div class="flex justify-between rounded-md items-center p-16 w-full bg-white mt-16">
+            <p-button [outlined]="true">Cancel</p-button>
+            <p-button (click)="continue()">Continue</p-button>
+        </div>
     </form>
-</div>

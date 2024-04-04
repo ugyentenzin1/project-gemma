@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { tap } from 'rxjs';
 import { StateBaseService } from 'src/app/services /state.base.service';
 
 @Component({
@@ -8,56 +10,20 @@ import { StateBaseService } from 'src/app/services /state.base.service';
 })
 export class ProjectsComponent implements OnInit {
 
-  products: any[] = [
-    {
-      code: 23433,
-      name: 'Generator',
-      category: 'Hardware',
-      quantity: 2
-    },
-    {
-      code: 23433,
-      name: 'Generator',
-      category: 'Hardware',
-      quantity: 2
-    },
-    {
-      code: 23433,
-      name: 'Generator',
-      category: 'Hardware',
-      quantity: 2
-    },
-    {
-      code: 23433,
-      name: 'Generator',
-      category: 'Hardware',
-      quantity: 2
-    },
-    {
-      code: 23433,
-      name: 'Generator',
-      category: 'Hardware',
-      quantity: 2
-    },
-    {
-      code: 23433,
-      name: 'Generator',
-      category: 'Hardware',
-      quantity: 2
-    }
-  ];
+  products!: any;
 
-  cols: any[] = [
-    {feild: 'code', header: 'Code'},
-    {feild: 'name', header: 'Name'},
-    {feild: 'category', header: 'Category'},
-    {feild: 'quatity', header: 'Quantity'},
-    {feild: 'action', header: 'Action'}
-  ];
+  cols: any[] = ['Std Id', 'Name', 'Citizen Id', 'Dzongkhag',
+'Gewong', 'Village', 'School Name', 'No Of Subject', 'Stream', 'Previous School',
+'Grade', 'House', 'Parents Name', 'Parents CitizenId', 'Parent Cont. no', 
+'Martial Status', 'Parent Dzongkhag', 'Parents Gewog', 'Product Village', 'Actions'];
 
-  constructor(private stateSevice: StateBaseService<any>) { }
+  constructor(private stateSevice: StateBaseService<any>, private db: AngularFireDatabase) { }
 
   ngOnInit(): void {
+      this.db.list('/users').valueChanges().
+      pipe(
+        tap(val => this.products = val)
+      ).subscribe()
   }
 
 }
