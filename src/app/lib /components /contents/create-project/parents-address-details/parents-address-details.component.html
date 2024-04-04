@@ -12,22 +12,16 @@
             <label for="name">Name</label>
         </div>
         <div class="p-float-label w-[48%] mb-24 mt-16">
-            <input pInputText id="studentId" class="w-full" formControlName="martialStatus"/>
-            <label for="studentId">StudentId</label>
+            <p-dropdown [options]="status" formArrayName="martialStatus" optionLabel="name"
+             [showClear]="true" [placeholder]="'Martial Status'"></p-dropdown> 
         </div>
         <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
-            <input pInputText id="citizenId" class="w-full" formControlName="citizenId"/>
-            <label for="citizenId">Citizen Id</label>
+            <input id="citizenId" pInputText id="citizenId" class="w-full" formControlName="citizenId"/>
+            <label for="citizenId"> Citizen Id</label>
         </div>
-        <div class="w-[48%] mb-24 mt-16">
-            <div class="flex-auto p-float-label">
-                <p-calendar class="w-full" [inputStyle]="{class: 'w-full'}" placeholder="Date of Birth"  formControlName="dateOfBirth" [showIcon]="true" inputId="dateOfBirth"></p-calendar>
-                <label for="dateOfBirth" class="block mb-2"> Date Of Birth </label>
-            </div>               
-        </div>
-        <div class="p-float-label w-[48%] mb-24 mr-16 mt-16">
-            <input pInputText id="contactNumber" class="w-full" formControlName="contactNumber"/>
-            <label for="contactNumber">Contact Number</label>
+        <div class="p-float-label w-[48%] mb-24 mt-16">
+            <input id="contactNumber" pInputText id="contactNumber" class="w-full" formControlName="contactNumber"/>
+            <label for="contactNumber">Contact Number</label>              
         </div>
 
         <div class="w-full my-16">

@@ -11,7 +11,7 @@ export interface StoreState {
 
 export interface BasicDetails {
     name: string,
-    dateOfBirth: string,
+    dateOfBirth: Date,
     studentId: string,
     citizenId: string,
     dzongkhag: string,

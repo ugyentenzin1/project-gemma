@@ -17,7 +17,6 @@ export class ParentsAddressDetailsComponent implements OnInit, OnDestroy {
 
   parentsDetails: FormGroup = this.fb.group({
     name: ['', Validators.required],
-    dateOfBirth: ['', Validators.required],
     martialStatus: ['', Validators.required],
     citizenId: [''],
     contactNumber: ['', Validators.required],
@@ -25,6 +24,8 @@ export class ParentsAddressDetailsComponent implements OnInit, OnDestroy {
     gewog: ['', Validators.required],
     village: ['', Validators.required],
   })
+
+  status: any[] = [{name: 'Married'}, {name: 'Single'}, {name: 'Divorce'}];
   
   ngOnInit(): void {
   }

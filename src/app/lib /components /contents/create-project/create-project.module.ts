@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { StrepperComponent } from './strepper/strepper.component';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     InputTextModule,
     ReactiveFormsModule,
     CalendarModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    DropdownModule
   ],
   providers:[]
 })
