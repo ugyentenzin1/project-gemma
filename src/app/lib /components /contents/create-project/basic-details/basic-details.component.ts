@@ -21,18 +21,15 @@ export class BasicDetailsComponent implements OnInit, OnDestroy {
     private db: AngularFireDatabase) { }
 
     dataDumb: any;
-
     route!: string;
-
     patchValue: any;
-
     paramsId!: any;
 
   basicDetails: FormGroup = this.fb.group({
     name: ['', Validators.required],
     dateOfBirth: [ Date, Validators.required],
     studentId: ['', Validators.required],
-    citizenId: [''],
+    citizenId: ['', Validators.required],
     dzongkhag: ['', Validators.required],
     gewog: ['', Validators.required],
     village: ['', Validators.required],
