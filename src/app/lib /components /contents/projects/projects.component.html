@@ -43,7 +43,7 @@
                     </ng-container>
                     <td class="flex justify-between" *ngIf="products.length">
                         <p-button icon="pi pi-pencil"></p-button>
-                        <p-button icon="pi pi-pencil" class="ml-16"></p-button>
+                        <p-button icon="pi pi-pencil" class="ml-16" routerLink="/home/add-student/basic-details" [queryParams]="{id: product.key}"></p-button>
                     </td>
                 </tr>
             </ng-template>

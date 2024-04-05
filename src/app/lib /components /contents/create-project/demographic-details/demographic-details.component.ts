@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap, tap } from 'rxjs';
 import { DemographicDetails } from 'src/app/interfaces/interfaceStore';
 import { StateBaseService } from 'src/app/services /state.base.service';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Component({
   selector: 'app-demographic-details',
@@ -11,10 +13,26 @@ import { StateBaseService } from 'src/app/services /state.base.service';
 })
 export class DemographicDetailsComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router, private fb: FormBuilder, private stateBaseService: StateBaseService<any>) { }
+  constructor(private router: Router, 
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+     private stateBaseService: StateBaseService<any>,
+     private db: AngularFireDatabase) { }
+
+     patchValue: any;
+
+     paraMapId: any;
 
   ngOnInit(): void {
-    this.dempGraphicDetails.patchValue(this.dempGraphicDetails.value)
+    this.activatedRoute.queryParamMap.pipe(
+      tap(val => this.paraMapId = val.get('id')),
+      switchMap(val => this.db.list(`/users/${val.get('id')}`).valueChanges()),
+      tap(val => {
+        this.patchValue = val[1];
+        this.dempGraphicDetails.patchValue(this.patchValue)
+      })
+    ).subscribe()
+
   }
 
   ngOnDestroy(): void {
@@ -30,9 +48,5 @@ export class DemographicDetailsComponent implements OnInit, OnDestroy {
     noOfSubjectTakenByStudents: ['', Validators.required],
     previousSchool: ['', Validators.required]
   })
-
-  continue() {
-    this.router.navigate(['/home/add-student/parents-details'])
-  }
 
 }

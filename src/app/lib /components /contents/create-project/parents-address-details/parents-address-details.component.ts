@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap, tap } from 'rxjs';
 import { DemographicDetails } from 'src/app/interfaces/interfaceStore';
 import { StateBaseService } from 'src/app/services /state.base.service';
 
@@ -13,7 +15,12 @@ export class ParentsAddressDetailsComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder,
     private router: Router,
-     private stateBaseService: StateBaseService<any>) { }
+     private stateBaseService: StateBaseService<any>,
+     private db: AngularFireDatabase,
+     private activatedRoute: ActivatedRoute) { }
+
+     patchValue: any;
+     paramId: any;
 
   parentsDetails: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -28,13 +35,17 @@ export class ParentsAddressDetailsComponent implements OnInit, OnDestroy {
   status: any[] = [{name: 'Married'}, {name: 'Single'}, {name: 'Divorce'}];
   
   ngOnInit(): void {
+    this.activatedRoute.queryParamMap.pipe(
+      tap(val => this.paramId = val.get('id')),
+      switchMap(val => this.db.list(`/users/${val.get('id')}`).valueChanges()),
+      tap(val => {
+        this.patchValue = val[2];
+        this.parentsDetails.patchValue(this.patchValue)
+      })
+    ).subscribe()
   }
 
   ngOnDestroy(): void {
     this.stateBaseService.add<DemographicDetails>({parentsDetails:this.parentsDetails?.value});  
-  }
-
-  continue() {
-    this.router.navigate(['/home/add-student/confirmation']);
   }
 }
