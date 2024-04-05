@@ -44,6 +44,6 @@
 
         <div class="flex justify-between rounded-md items-center p-16 w-full bg-white mt-16">
             <p-button [outlined]="true">Cancel</p-button>
-            <p-button (click)="continue()">Continue</p-button>
+            <p-button routerLink="/home/add-student/confirmation" [queryParams]="{id: paramId}">Continue</p-button>
         </div>
     </form>
