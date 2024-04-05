@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BasicDetails, Student } from 'src/app/interfaces/interfaceStore';
+import { ActivatedRoute } from '@angular/router';
+import { BasicDetails} from 'src/app/interfaces/interfaceStore';
 import { StateBaseService } from 'src/app/services /state.base.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { Subscription, map, switchMap, tap } from 'rxjs';
+import { switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-basic-details',
