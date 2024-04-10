@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,11 +16,12 @@ export class ParentsAddressDetailsComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder,
     private router: Router,
      private stateBaseService: StateBaseService<any>,
-     private db: AngularFireDatabase,
      private activatedRoute: ActivatedRoute) { }
 
      patchValue: any;
      paramId: any;
+
+     db = inject(AngularFireDatabase)
 
   parentsDetails: FormGroup = this.fb.group({
     name: ['', Validators.required],

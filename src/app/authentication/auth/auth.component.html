@@ -5,7 +5,8 @@
         <img src="https://image.ibb.co/hW1YHq/login-logo.png" alt="Sluralpright" />
       </div>
       <ng-container *ngIf="loginForm else passwordReset">
-        <form [formGroup]="signInForm" (ngSubmit)="emailAndPassword(signInForm.value.username, signInForm.value.password)">
+        <form [formGroup]="signInForm"
+          (ngSubmit)="emailAndPassword(signInForm.value.username, signInForm.value.password)">
           <div>
             <label style="color: white;">Email or username</label>
             <input formControlName="username" type="text" class="text-input"
@@ -23,8 +24,8 @@
               style="color: rgb(220, 74, 74); margin-bottom: 16px; margin-top: 8px;">This is a required field*</p>
           </div>
           <button [disabled]="signInForm.invalid && (signInForm.touched || signInForm.dirty)" type="submit"
-            [ngClass]="signInForm.invalid && (signInForm.touched || signInForm.dirty) ? 'disabled-btn': 'primary-btn'"
-          >Sign In</button>
+            [ngClass]="signInForm.invalid && (signInForm.touched || signInForm.dirty) ? 'disabled-btn': 'primary-btn'">Sign
+            In</button>
         </form>
       </ng-container>
       <ng-template #passwordReset>
@@ -37,14 +38,16 @@
             <p *ngIf="resetPassword.get('email')?.invalid && (resetPassword.get('email')?.touched || resetPassword.get('email')?.dirty)"
               style="color: rgb(220, 74, 74); margin-bottom: 16px; margin-top: 8px;">This is a required field*</p>
           </div>
-          <button [disabled]="resetPassword.invalid && (resetPassword.touched || resetPassword.dirty)" 
-           [ngClass]="resetPassword.invalid && (resetPassword.touched || resetPassword.dirty) ? 'disabled-btn': 'primary-btn'" type="submit">
+          <button [disabled]="resetPassword.invalid && (resetPassword.touched || resetPassword.dirty)"
+            [ngClass]="resetPassword.invalid && (resetPassword.touched || resetPassword.dirty) ? 'disabled-btn': 'primary-btn'"
+            type="submit">
             Send Email
           </button>
         </form>
       </ng-template>
       <div style="margin-bottom: 16px; display: flex; justify-content: center; align-items: center;" class="links">
-        <button class="secondary-btn" (click)="forgotPassowrd()">{{loginForm ?  'Forgot Password': 'Back To Login Page'}}</button>
+        <button class="secondary-btn" (click)="forgotPassowrd()">{{loginForm ? 'Forgot Password': 'Back To Login
+          Page'}}</button>
       </div>
       <div class="or">
         <hr class="bar" />
